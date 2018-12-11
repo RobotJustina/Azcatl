@@ -25,3 +25,8 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 
 - Documentacion [Manual_Usuario_Xochitonal] :: Esta documentación describe el desarrolloo del robot, así como una rápida introducción a cada uno de los componentes disponibles y una serie de instrucciones para la instalación del software necesario. 
 
+=> INFORMACIÓN EXTRA
+- Cuenta de correo para el uso de la tablet, user: "lab.biorobotica@gmail.com"    pwrd: "JustinaTimeDebug" 
+- Contraseña tablet: "pumas"
+- Cuenta de correo para el uso de la app Smart Things, user:Robotscasa@gmail.com  pwrd: "p0u7mjaqsw"
+
