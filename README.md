@@ -19,7 +19,7 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 
 - Workspace [catkin_ws] :: En esta carpeta se encuentra almacenada todo el software desarrollado hasta la fecha, el cual debe ser implementado en la tarjeta Raspberry Pi que se encuentra integrada al robot.
 
-- Smart things [SmartThings_files] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things para la tarjeta arduino UNO. Así como el código original del nodo para ROS con el que se comenzó a implementar este módulo.
+- Smart things [SmartThings_Develop] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things para la tarjeta arduino UNO. Así como el código original del nodo para ROS con el que se comenzó a implementar este módulo.
 
 - Archivos Arduino Mega [ArduinoM_files] :: En esta carpeta se encuentra el archivo .iso que debe ser grabado en la tarjeta Arduino Mega para la lectura de los sensores y el control de los motores.
 
@@ -28,5 +28,5 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 => INFORMACIÓN EXTRA
 - Cuenta de correo para el uso de la tablet, user: "lab.biorobotica@gmail.com"    pwrd: "JustinaTimeDebug" 
 - Contraseña tablet: "pumas"
-- Cuenta de correo para el uso de la app Smart Things, user:Robotscasa@gmail.com  pwrd: "p0u7mjaqsw"
+- Cuenta de correo para el uso de la app Smart Things, user:"Robotscasa@gmail.com"  pwrd: "p0u7mjaqsw"
 
