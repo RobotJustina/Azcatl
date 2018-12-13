@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 	FACULTAD DE INGENIERIA
+	Laboratorio de Biorobotica 
+	DANIEL GARCÉS MARÍN
+	Launch para iniciar todos los nodos del poyecto para el uso del módulo Smart Things y a app móvil
+		"TEPORINGO V3":: Xochitonal
+
+	Ultima versión: 18 de Septiembre 2018	-->
+	
+<launch>
+
+	<group ns="hardware">
+<!--	DaGaMa_jû-san -->
+		<node name="motor_node" pkg="motor" type="motor_node.py" output="screen" />
+	</group>
+
+	<group ns="software">
+		<node name="xochitonal_smth" pkg="xochitonal" type="xochitonal_smth" output="screen" />
+		<node name="smart_things_node" pkg="smart_things" type="smart_things_node.py" output="screen" />
+	</group>
+
+</launch>
