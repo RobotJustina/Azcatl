@@ -64,23 +64,23 @@ void lightSearch(){
 
 	switch(num_fot){
 					case 0: //Fuente de luz frente al objetivo
-							dir_MotorA[0]=vel_prueba;
-							dir_MotorA[1]=vel_prueba;
+							dir_MotorA[0]=vel_motores;
+							dir_MotorA[1]=vel_motores;
 						break;
 
 					case 1: //Fuente de luz derecha al objetivo
-							dir_MotorA[0]=vel_prueba;
-							dir_MotorA[1]=(-1*vel_prueba);
+							dir_MotorA[0]=vel_motores;
+							dir_MotorA[1]=(-1*vel_motores);
 						break;
 
 					case 2: //Fuente de luz detras al objetivo
-							dir_MotorA[0]=(-1*vel_prueba);
-							dir_MotorA[1]=(-1*vel_prueba);
+							dir_MotorA[0]=(-1*vel_motores);
+							dir_MotorA[1]=(-1*vel_motores);
 						break;
 
 					case 3://Fuente de luz izquierda al objetivo
-							dir_MotorA[0]=(-1*vel_prueba);
-							dir_MotorA[1]=vel_prueba;
+							dir_MotorA[0]=(-1*vel_motores);
+							dir_MotorA[1]=vel_motores;
 						break;
 
 					default: //ALTO, no hay nada claro
@@ -183,7 +183,7 @@ int main(int  argc, char** argv){
  	ros::Subscriber subFoto = n.subscribe("/hardware/sensors/foto",1000,valorFoto); //Nodo Sensors
 
  	//Datos a publicar
-	std_msgs::Float32MultiArray  D_Motor; //Dirección del motor
+	std_msgs::Float32MultiArray D_Motor; //Dirección del motor
 	D_Motor.data.resize(2);	
 
     //Publicación de las velocidades de los motores al Arduino
@@ -198,7 +198,8 @@ int main(int  argc, char** argv){
 		//lightSearch2(); //Analizando datos del fotoresistores para asignar el movimiento
 
 		//Publicación de tópico de las direcciones
-        D_Motor.data = dirMotor; 
+                D_Motor.data[0] = dir_MotorA[0]; 
+		D_Motor.data[1] = dir_MotorA[1]; 
 		
 		pubDir.publish(D_Motor);  //Envió de las direcciónes al nodo Motor.py
 

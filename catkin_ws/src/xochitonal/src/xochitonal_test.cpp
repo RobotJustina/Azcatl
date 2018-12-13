@@ -113,39 +113,28 @@ void pruebaMotores(){
 
 					case 5: //Prueba de SMART THINGS
 
-							switch(dirMotor){ //Switch anidado para el Smart Things
+							if(dirMotor=="Fw"){ //Avanza
+								dir_MotorA[0]=vel_prueba;
+								dir_MotorA[1]=vel_prueba;}
 
-												case "Fw":	//Avanza
-														dir_MotorA[0]=vel_prueba;
-														dir_MotorA[1]=vel_prueba;
-														break;
+							else if(dirMotor=="Bw"){ //Atras
+									dir_MotorA[0]=(-1*vel_prueba);
+									dir_MotorA[1]=(-1*vel_prueba);}
 
-												case "Bw"://Atras
-														dir_MotorA[0]=(-1*vel_prueba);
-														dir_MotorA[1]=(-1*vel_prueba);
-														break;
+							else if(dirMotor=="R"){ //Giro Derecha
+									dir_MotorA[0]=vel_prueba;
+									dir_MotorA[1]=(-1*vel_prueba);}
 
-												case "R"://Giro Derecha
-														dir_MotorA[0]=vel_prueba;
-														dir_MotorA[1]=(-1*vel_prueba);
-														break;
+							else if(dirMotor=="L"){ //Giro Izquierda
+									dir_MotorA[0]=(-1*vel_prueba);
+									dir_MotorA[1]=vel_prueba;}
 
-												case "L"://Giro Izquierda
-														dir_MotorA[0]=(-1*vel_prueba);
-														dir_MotorA[1]=vel_prueba;
-														break;
-
-												case "stop"://Alto
-														dir_MotorA[0]=0;
-														dir_MotorA[1]=0;
-												break;
-
-												default://Alto
-														dir_MotorA[0]=0;
-														dir_MotorA[1]=0;
-														break;
-
-							} //Fin del switch anidado para Smart Things
+							else if(dirMotor=="stop"){ //Alto
+									dir_MotorA[0]=0;
+									dir_MotorA[1]=0;}
+							else{//Alto
+									dir_MotorA[0]=0;
+									dir_MotorA[1]=0;}
 							break;
 
 					default://Alto
@@ -189,7 +178,8 @@ int main(int  argc, char** argv){
 	pruebaMotores(); //Se prueban los motores
 
 		//Publicación de tópico de las direcciones
-    D_Motor.data = dir_MotorA; //<-----
+    	D_Motor.data[0] = dir_MotorA[0]; //<-----
+	D_Motor.data[1] = dir_MotorA[1]; //<-----
 	std::cout<<D_Motor<<std::endl;
 
 		pubDir.publish(D_Motor);  //Envió de las direcciónes al nodo Motor.py

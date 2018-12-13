@@ -655,10 +655,10 @@ sensor_node_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/Hardware/sensor_node
 sensor_node_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/Hardware/sensor_node
 
 //Value Computed by CMake
-smart_things_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/smart_things
+smart_things_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/Hardware/smart_things
 
 //Value Computed by CMake
-smart_things_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/smart_things
+smart_things_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/Hardware/smart_things
 
 //Value Computed by CMake
 smclib_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/bond_core/smclib
@@ -834,7 +834,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=22
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=17
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

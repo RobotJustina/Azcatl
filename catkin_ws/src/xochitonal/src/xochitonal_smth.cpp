@@ -42,60 +42,50 @@ void dirObtenida(const std_msgs::String::ConstPtr& dirM){
 	dirMotor=dirM->data;
 	std::cout<<"Dirección recibida::_"<<dirMotor<<std::endl;
 
-	switch(dirMotor){ //Switch anidado para el Smart Things
 
-						case "Fw":	//Avanza
-								dir_MotorA[0]=vel_motores;
-								dir_MotorA[1]=vel_motores;
-								break;
+	if(dirMotor=="Fw"){ //Avanza
+		dir_MotorA[0]=vel_motores;
+		dir_MotorA[1]=vel_motores;}
 
-						case "Bw"://Atras
-								dir_MotorA[0]=(-1*vel_motores);
-								dir_MotorA[1]=(-1*vel_motores);
-								break;
+	else if(dirMotor=="Bw"){ //Atras
+		dir_MotorA[0]=(-1*vel_motores);
+		dir_MotorA[1]=(-1*vel_motores);}
 
-						case "R"://Giro Derecha
-								dir_MotorA[0]=vel_motores;
-								dir_MotorA[1]=(-1*vel_motores);
-								break;
+	else if(dirMotor=="R"){ //Giro Derecha
+		dir_MotorA[0]=vel_motores;
+		dir_MotorA[1]=(-1*vel_motores);}
 
-						case "L"://Giro Izquierda
-								dir_MotorA[0]=(-1*vel_motores);
-								dir_MotorA[1]=vel_motores;
-								break;
+	else if(dirMotor=="L"){ //Giro Izquierda
+		dir_MotorA[0]=(-1*vel_motores);
+		dir_MotorA[1]=vel_motores;}
 
-						case "stop"://Alto
-								dir_MotorA[0]=0;
-								dir_MotorA[1]=0;
-						break;
+	else if(dirMotor=="stop"){ //Alto
+		dir_MotorA[0]=0;
+		dir_MotorA[1]=0;}
 
-						case "FwR":	//Giro Avanza Derecha
-								dir_MotorA[0]=vel_motores;
-								dir_MotorA[1]=(-1*vel_motores)/2;
-								break
+	else if(dirMotor=="FwR"){ //Giro Avanza Derecha
+		dir_MotorA[0]=vel_motores;
+		dir_MotorA[1]=(-1*vel_motores)/2;}
 
-						case "FwL"://Giro Avanza Izquierda
-								dir_MotorA[0]=(-1*vel_motores)/2;
-								dir_MotorA[1]=vel_motores;
-								break;
+	else if(dirMotor=="FwL"){ //Giro Avanza Izquierda
+		dir_MotorA[0]=(-1*vel_motores)/2;
+		dir_MotorA[1]=vel_motores;}
 
-						case "BwR"://Giro Atras Izquierda
-								dir_MotorA[0]=(-1*vel_motores);
-								dir_MotorA[1]=vel_motores/2;
-								break;
+	else if(dirMotor=="BwR"){//Giro Atras Izquierda
+		dir_MotorA[0]=(-1*vel_motores);
+		dir_MotorA[1]=vel_motores/2;}
 
-						case "BwL":	//Giro Avanza Derecha
-								dir_MotorA[0]=vel_motores/2;
-								dir_MotorA[1]=(-1*vel_motores);
-								break
+	else if(dirMotor=="BwL"){//Giro Avanza Derecha
+		dir_MotorA[0]=vel_motores/2;
+		dir_MotorA[1]=(-1*vel_motores);}
 
-						default://Alto
-								dir_MotorA[0]=0;
-								dir_MotorA[1]=0;
-								break;
-	}	}//Fin de dirObtenida
+	else{//Alto
+		dir_MotorA[0]=0;
+		dir_MotorA[1]=0;}
 
-______________________________________________________________________________________________________________
+		}//Fin de dirObtenida
+
+//______________________________________________________________________________________________________________
 //Función principal
 int main(int  argc, char** argv){
 
@@ -121,7 +111,8 @@ int main(int  argc, char** argv){
 
 	//pruebaMotores(); //Se prueban los motores
 		//Publicación de tópico de las direcciones
-        D_Motor.data = dirMotor; 
+        D_Motor.data[0] = dir_MotorA[0]; 
+	D_Motor.data[1] = dir_MotorA[1];
 		
 		pubDir.publish(D_Motor);  //Envió de las direcciónes al nodo Motor.py
 

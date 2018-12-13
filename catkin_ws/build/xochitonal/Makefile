@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/pi/catkin_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -77,6 +66,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -166,21 +166,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-xochitonal/CMakeFiles/xochitonal_node.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xochitonal/CMakeFiles/xochitonal_node.dir/rule
-.PHONY : xochitonal/CMakeFiles/xochitonal_node.dir/rule
-
-# Convenience name for target.
-xochitonal_node: xochitonal/CMakeFiles/xochitonal_node.dir/rule
-
-.PHONY : xochitonal_node
-
-# fast build rule for target.
-xochitonal_node/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_node.dir/build.make xochitonal/CMakeFiles/xochitonal_node.dir/build
-.PHONY : xochitonal_node/fast
-
-# Convenience name for target.
 xochitonal/CMakeFiles/xochitonal_light.dir/rule:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xochitonal/CMakeFiles/xochitonal_light.dir/rule
 .PHONY : xochitonal/CMakeFiles/xochitonal_light.dir/rule
@@ -209,21 +194,6 @@ xochitonal_show: xochitonal/CMakeFiles/xochitonal_show.dir/rule
 xochitonal_show/fast:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_show.dir/build.make xochitonal/CMakeFiles/xochitonal_show.dir/build
 .PHONY : xochitonal_show/fast
-
-# Convenience name for target.
-xochitonal/CMakeFiles/xochitonal_base.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 xochitonal/CMakeFiles/xochitonal_base.dir/rule
-.PHONY : xochitonal/CMakeFiles/xochitonal_base.dir/rule
-
-# Convenience name for target.
-xochitonal_base: xochitonal/CMakeFiles/xochitonal_base.dir/rule
-
-.PHONY : xochitonal_base
-
-# fast build rule for target.
-xochitonal_base/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_base.dir/build.make xochitonal/CMakeFiles/xochitonal_base.dir/build
-.PHONY : xochitonal_base/fast
 
 # Convenience name for target.
 xochitonal/CMakeFiles/xochitonal_smth.dir/rule:
@@ -255,33 +225,6 @@ xochitonal_test/fast:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_test.dir/build.make xochitonal/CMakeFiles/xochitonal_test.dir/build
 .PHONY : xochitonal_test/fast
 
-src/xochitonal_base.o: src/xochitonal_base.cpp.o
-
-.PHONY : src/xochitonal_base.o
-
-# target to build an object file
-src/xochitonal_base.cpp.o:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_base.dir/build.make xochitonal/CMakeFiles/xochitonal_base.dir/src/xochitonal_base.cpp.o
-.PHONY : src/xochitonal_base.cpp.o
-
-src/xochitonal_base.i: src/xochitonal_base.cpp.i
-
-.PHONY : src/xochitonal_base.i
-
-# target to preprocess a source file
-src/xochitonal_base.cpp.i:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_base.dir/build.make xochitonal/CMakeFiles/xochitonal_base.dir/src/xochitonal_base.cpp.i
-.PHONY : src/xochitonal_base.cpp.i
-
-src/xochitonal_base.s: src/xochitonal_base.cpp.s
-
-.PHONY : src/xochitonal_base.s
-
-# target to generate assembly for a file
-src/xochitonal_base.cpp.s:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_base.dir/build.make xochitonal/CMakeFiles/xochitonal_base.dir/src/xochitonal_base.cpp.s
-.PHONY : src/xochitonal_base.cpp.s
-
 src/xochitonal_light.o: src/xochitonal_light.cpp.o
 
 .PHONY : src/xochitonal_light.o
@@ -308,33 +251,6 @@ src/xochitonal_light.s: src/xochitonal_light.cpp.s
 src/xochitonal_light.cpp.s:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_light.dir/build.make xochitonal/CMakeFiles/xochitonal_light.dir/src/xochitonal_light.cpp.s
 .PHONY : src/xochitonal_light.cpp.s
-
-src/xochitonal_node.o: src/xochitonal_node.cpp.o
-
-.PHONY : src/xochitonal_node.o
-
-# target to build an object file
-src/xochitonal_node.cpp.o:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_node.dir/build.make xochitonal/CMakeFiles/xochitonal_node.dir/src/xochitonal_node.cpp.o
-.PHONY : src/xochitonal_node.cpp.o
-
-src/xochitonal_node.i: src/xochitonal_node.cpp.i
-
-.PHONY : src/xochitonal_node.i
-
-# target to preprocess a source file
-src/xochitonal_node.cpp.i:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_node.dir/build.make xochitonal/CMakeFiles/xochitonal_node.dir/src/xochitonal_node.cpp.i
-.PHONY : src/xochitonal_node.cpp.i
-
-src/xochitonal_node.s: src/xochitonal_node.cpp.s
-
-.PHONY : src/xochitonal_node.s
-
-# target to generate assembly for a file
-src/xochitonal_node.cpp.s:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f xochitonal/CMakeFiles/xochitonal_node.dir/build.make xochitonal/CMakeFiles/xochitonal_node.dir/src/xochitonal_node.cpp.s
-.PHONY : src/xochitonal_node.cpp.s
 
 src/xochitonal_show.o: src/xochitonal_show.cpp.o
 
@@ -423,28 +339,20 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
-	@echo "... xochitonal_node"
 	@echo "... test"
 	@echo "... xochitonal_light"
+	@echo "... edit_cache"
 	@echo "... xochitonal_show"
 	@echo "... install/strip"
 	@echo "... install"
-	@echo "... xochitonal_base"
 	@echo "... install/local"
 	@echo "... xochitonal_smth"
 	@echo "... list_install_components"
 	@echo "... xochitonal_test"
 	@echo "... rebuild_cache"
-	@echo "... src/xochitonal_base.o"
-	@echo "... src/xochitonal_base.i"
-	@echo "... src/xochitonal_base.s"
 	@echo "... src/xochitonal_light.o"
 	@echo "... src/xochitonal_light.i"
 	@echo "... src/xochitonal_light.s"
-	@echo "... src/xochitonal_node.o"
-	@echo "... src/xochitonal_node.i"
-	@echo "... src/xochitonal_node.s"
 	@echo "... src/xochitonal_show.o"
 	@echo "... src/xochitonal_show.i"
 	@echo "... src/xochitonal_show.s"
