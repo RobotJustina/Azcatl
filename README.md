@@ -1,4 +1,4 @@
-# Xochitonal
+# Kolotl
 LABORATORIO DE BIOROBÓTICA, Facultad de Ingeniería UNAM.
 
 Responsable: Daniel Garcés Marín
