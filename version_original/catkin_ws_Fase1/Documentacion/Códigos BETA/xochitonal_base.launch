@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 	FACULTAD DE INGENIERIA
+	Laboratorio de Biorobotica 
+	DANIEL GARCÉS MARÍN
+	Launch para inicial los nodos base del poyecto
+		"TEPORINGO V3":: Xochitonal
+
+	Ultima versión: 11 de Septiembre 2018	-->
+	
+<launch>
+
+	<group ns="hardware">
+<!--	DaGaMa_jû-san -->
+		<node name="motor_node" pkg="motor" type="motor_node.py" output="screen" />
+		<node name="sensor_node" pkg="sensor" type="sensor_node" output="screen" />
+	</group>
+
+	<group ns="software">
+		<node name="xochitonal_node" pkg="xochitonal" type="xochitonal_node" output="screen" />
+		<node name="smart_things_node" pkg="smart_things" type="smart_things_node.py" output="screen" />
+	</group>
+
+</launch>
