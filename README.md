@@ -33,10 +33,10 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 
 
 - Proyecto anterior [version_original]:: En esta carpeta se encuentran todos los archivos que se desarrollaron para una versión anterior del proyecto bajo el nombre de "Xochitonal", el cual contaba con caracterisitcas y un sistema mas sencillo, dentro de esta carpeta encontraremos el siguiente contenido:
+            
+            * Smart things [SmartThings_Develop] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things, no se presenta ningún cambio representativo en los archivos encontrados en el proyecto actual.
 
-* Smart things [SmartThings_Develop] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things, no se presenta ningún cambio representativo en los archivos encontrados en el proyecto actual.
-
-* Catkin original [catkin_ws_Fase1] :: Este representa el workspace con el que se partío para el desarrollo del presente proyecto. 
+            * Catkin original [catkin_ws_Fase1] :: Este representa el workspace con el que se partío para el desarrollo del presente proyecto. 
 
 => INFORMACIÓN EXTRA
 - Cuenta de correo para el uso de la tablet, user: "lab.biorobotica@gmail.com"    pwrd: "JustinaTimeDebug" 
