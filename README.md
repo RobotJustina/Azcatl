@@ -4,7 +4,9 @@ LABORATORIO DE BIOROBÓTICA, Facultad de Ingeniería UNAM.
 Responsable: Daniel Garcés Marín
 
 Integrantes:
-            Hugo (2)
+            
+            Victor Hugo Sanchez Correa --- Hugo (2)
+            
             Omar 
             
 Breviario cultural: Azcatl = Hormiga en Nahuatl
