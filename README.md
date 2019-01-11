@@ -4,7 +4,9 @@ LABORATORIO DE BIOROBÓTICA, Facultad de Ingeniería UNAM.
 Responsable: Daniel Garcés Marín
 
 Integrantes:
-            Hugo (2)
+            
+            Victor Hugo Sanchez Correa --- Hugo (2)
+            
             Omar 
             
 Breviario cultural: Azcatl = Hormiga en Nahuatl
@@ -23,13 +25,18 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 
 => CONTENIDO DEL REPOSITORIO
 
-- Workspace [catkin_ws] :: En esta carpeta se encuentra almacenada todo el software desarrollado hasta la fecha, el cual debe ser implementado en la tarjeta Raspberry Pi que se encuentra integrada al robot.
+- Workspace [catkin_ws] :: En esta carpeta se encuentra almacenada todo el software desarrollado hasta la fecha, el cual debe ser implementado en la tarjeta Raspberry Pi que se encuentra integrada al robot.a la tarjeta arduino UNO. Así como el código original del nodo para ROS con el que se comenzó a implementar este módulo.
 
-- Smart things [SmartThings_Develop] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things para la tarjeta arduino UNO. Así como el código original del nodo para ROS con el que se comenzó a implementar este módulo.
-
-- Archivos Arduino [Arduino_files] :: En esta carpeta se encuentran los archivo .iso que debes ser grabados en las tarjetas Arduino UNO paa el uso del módulo SMART THINGS y Arduino Mega para la lectura de los sensores y el control de los motores. Esta carpeta se encuentra dentro del workspace [catkin_ws] para mayor comodidad
+- Archivos Arduino [Arduino_files] :: En esta carpeta se encuentran los archivo .iso que debes ser grabados en las tarjetas Arduino UNO paa el uso del módulo SMART THINGS y Arduino Mega para la lectura de los sensores y el control de los motores. 
 
 - Documentacion [Manual_Usuario_Azcatl] :: Esta documentación describe el desarrolloo del robot, así como una rápida introducción a cada uno de los componentes disponibles y una serie de instrucciones para la instalación del software necesario. Este documento tamibén se encuentra dentro del workspace [ccatkin_ws] para un accceso más rápido y cómodo.
+
+
+- Proyecto anterior [version_original]:: En esta carpeta se encuentran todos los archivos que se desarrollaron para una versión anterior del proyecto bajo el nombre de "Xochitonal", el cual contaba con caracterisitcas y un sistema mas sencillo, dentro de esta carpeta encontraremos el siguiente contenido:
+            
+            * Smart things [SmartThings_Develop] :: En esta carpeta se encuentra todo el software necesario para el uso del módulo Smart Things, no se presenta ningún cambio representativo en los archivos encontrados en el proyecto actual.
+
+            * Catkin original [catkin_ws_Fase1] :: Este representa el workspace con el que se partío para el desarrollo del presente proyecto. 
 
 => INFORMACIÓN EXTRA
 - Cuenta de correo para el uso de la tablet, user: "lab.biorobotica@gmail.com"    pwrd: "JustinaTimeDebug" 
