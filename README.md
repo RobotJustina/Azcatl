@@ -1,9 +1,15 @@
-# Kolotl
+# Azcatl
 LABORATORIO DE BIOROBÓTICA, Facultad de Ingeniería UNAM.
 
 Responsable: Daniel Garcés Marín
 
-El proposito de este repositorio es almacenar el trabajo que se ha desarrollado en el proyecto Xochitonal, el cual tiene que objetivo desarrollar un robot móvil autónomo el cual cuente con características similares a los desarrolados en el proyecto justina, en términos de navegación autónoma y planeación de acciones, además de que cuente con una compatibilidad para trabajar con dispositivos Smart Things. 
+Integrantes:
+            Hugo (2)
+            Omar 
+            
+Breviario cultural: Azcatl = Hormiga en Nahuatl
+
+El proposito de este repositorio es almacenar el trabajo que se ha desarrollado en el proyecto Azcatl, el cual tiene que objetivo desarrollar un robot móvil autónomo el cual cuente con características similares a los desarrolados en el proyecto justina, en términos de navegación autónoma y planeación de acciones, además de que cuente con una compatibilidad para trabajar con dispositivos Smart Things. 
 
 Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas características se encuentran explicadas en la documentación incluida en este repositorio. Pero en pocas palabras consta de un robot de tipo diferencial con 6 ruedas, una torre de fotoresistores, el módulo Smart Things, arduinos y una raspberry sobre la cual corre la arquitectura del proyecto.
 
@@ -23,10 +29,11 @@ Actualmente el proyecto cuenta con un robot móvil de seis ruedas cuyas caracter
 
 - Archivos Arduino [Arduino_files] :: En esta carpeta se encuentran los archivo .iso que debes ser grabados en las tarjetas Arduino UNO paa el uso del módulo SMART THINGS y Arduino Mega para la lectura de los sensores y el control de los motores. Esta carpeta se encuentra dentro del workspace [catkin_ws] para mayor comodidad
 
-- Documentacion [Manual_Usuario_Xochitonal] :: Esta documentación describe el desarrolloo del robot, así como una rápida introducción a cada uno de los componentes disponibles y una serie de instrucciones para la instalación del software necesario. Este documento tamibén se encuentra dentro del workspace [ccatkin_ws] para un accceso más rápido y cómodo.
+- Documentacion [Manual_Usuario_Azcatl] :: Esta documentación describe el desarrolloo del robot, así como una rápida introducción a cada uno de los componentes disponibles y una serie de instrucciones para la instalación del software necesario. Este documento tamibén se encuentra dentro del workspace [ccatkin_ws] para un accceso más rápido y cómodo.
 
 => INFORMACIÓN EXTRA
 - Cuenta de correo para el uso de la tablet, user: "lab.biorobotica@gmail.com"    pwrd: "JustinaTimeDebug" 
 - Contraseña tablet: "pumas"
 - Cuenta de correo para el uso de la app Smart Things, user:"Robotscasa@gmail.com"  pwrd: "p0u7mjaqsw"
+- Usuario para la computadora Dell asignada al proyecto, user: Biorobotica, pwrd: pumaspumas
 
