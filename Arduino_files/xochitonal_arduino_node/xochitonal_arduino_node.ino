@@ -50,6 +50,12 @@ int fotoR[8]= {A0,A1,A2,A3,A4,A5,A6,A7};
 #define Enc_M6A 21//Interrup2
 #define Enc_M6B 24
 
+//Sensores de contacto digitales
+//Sensor derecho
+#define Cont_Der 28 //Sensor de contacto derecho
+//Sensor izquierdo
+#define Cont_Izq 30 //Sensor de contacto derecho
+
 //----------------------------------------------------------------------------------
 //VARIABLES GLOBALES
 
@@ -61,13 +67,15 @@ int fotoR[8]= {A0,A1,A2,A3,A4,A5,A6,A7};
  int pwm_D = 0; //Valor de dirección del Motor_D
  int pwm_I = 0; //Valor de dirección del Motor_I
 
+
   //Variables Topicos
 float valor_SL[8]={0.0,0.0,0.0,0.0};  //Almacenamiento de valores sensados de los fotoresistores
 int vueltas_Enc[6]={0,0,0,0,0,0}; //Alemacenamiento de la vueltas dadas con los enconders
+int obstaculo[2]={0,0}; //Almacenamiento de un valor binario para detectar la presencia de obstaculos
 	
   //Almacenamiento de los datos que se enviarán a la Raspberry
-float data_arduino[14];
-  // [8]::Fotoresistencias + [6] Datos encoders
+float data_arduino[16];
+  // [8]::Fotoresistencias + [6] Datos encoders + [2] Detector obstaculos
 
 //----------------------------------------------------------------------------------------
 //ENCODERS Y PID
@@ -148,7 +156,7 @@ void setup(){
   
   n.advertise(data_robot); 
   n.subscribe(robot_Speeds); // Subscribe al topico de los movimientos
-  d_robot.data_length = 14; //Declara tamaño del arreglo a publicar [8]:FotoR, [6]: Enc
+  d_robot.data_length = 16; //Declara tamaño del arreglo a publicar [8]:FotoR, [6]: Enc
    
    //Configuracin de los pines para los Encoders
   pinMode(Enc_M1A,INPUT);
@@ -180,6 +188,9 @@ void setup(){
   attachInterrupt(3,encoderM5aEvent,CHANGE); //Int3 =Enc_M5A = pin20
   attachInterrupt(2,encoderM6aEvent,CHANGE); //Int2 =Enc_M6A = pin21
   
+  //Detectando obstaculos
+   pinMode(Cont_Der,INPUT);
+   pinMode(Cont_Izq,INPUT);
 } //Fin del SETUP
 //_____________________________________________________________________________________________________________________
 
@@ -298,12 +309,18 @@ void loop(){
   vueltas_Enc[3]=float(ContM4);
   vueltas_Enc[4]=float(ContM5);
   vueltas_Enc[5]=float(ContM6);
-        
+     
+  //Leyendo sensores de contacto para detectar obstaculos
+	obstaculos[1]=digitalRead(Cont_Der);
+	obstaculos[2]=digitalRead(Cont_Izq);
   //Enviando los datos de los encoders a la raspberry
   for(int j=0; j<6;j++){       
     data_arduino[j+8]=vueltas_Enc[j];  //Asignacin al arreglo del topico a publicar
   }//Fin de la posicion de las llantas
-
+  for(int k=0; k<2; k++)
+  {
+	data_arduino[k+14]=obstaculos[k]; //Asignación de la presencia de obstaculos al arreglo del tópico
+  }//Fin de la presencia de obstaculos
   //PROCESO DE LA PUBLICACION DE TOPICO      
   d_robot.data=data_arduino;//Se le asignan los datos recolectados al topico que se va a publicar
 
