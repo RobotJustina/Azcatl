@@ -7,7 +7,7 @@ Integrantes:
             
             Victor Hugo Sanchez Correa --- Hugo (2)
             
-            Omar 
+            Omar Noriega Camacho
             
 Breviario cultural: Azcatl = Hormiga en Nahuatl
 

@@ -1,14 +1,15 @@
 /************************************************************
-*	LABORATORIO BIOROBÓTICA 2018
-*	Garcés Marín Daniel 		
-*	PROYECTO <TEPORINGO>:: Xochitonal FASE 2 // Iteracion GAMMA
+*  LABORATORIO BIOROBÓTICA 2018
+* Garcés Marín Daniel     
+* PROYECTO <ÁZCATL>
 *
-*		Programa de Arduino enfocado en dos objetivos principales:
-			-Recolectar información de los sensores: Fotoresistencias [8]
-			-Muestreo de los Encoders [6] por medio de interrupciones.
-                        -Realiza un analisis de control PID
-*	Ultima versión:: 8 de Noviembre del 2018
+*   Programa de Arduino enfocado en dos objetivos principales:
+      -Recolectar información de los sensores: Fotoresistencias [8]; Sensores infrarrojos de distancia [2]
+      -Muestreo de los Encoders [6] por medio de interrupciones.
+         -Realiza un analisis de control PID
+* Ultima versión:: 22 de Enero del 209
 *********************************************************************/
+
 //DaGaMa_jû-san 
 
 //LIBRERÍAS
@@ -71,8 +72,8 @@ int fotoR[8]= {A0,A1,A2,A3,A4,A5,A6,A7};
   //Variables Topicos
 float valor_SL[8]={0.0,0.0,0.0,0.0};  //Almacenamiento de valores sensados de los fotoresistores
 int vueltas_Enc[6]={0,0,0,0,0,0}; //Alemacenamiento de la vueltas dadas con los enconders
-int obstaculo[2]={0,0}; //Almacenamiento de un valor binario para detectar la presencia de obstaculos
-	
+int obstaculos[2]={0,0}; //Almacenamiento de un valor binario para detectar la presencia de obstaculos
+  
   //Almacenamiento de los datos que se enviarán a la Raspberry
 float data_arduino[16];
   // [8]::Fotoresistencias + [6] Datos encoders + [2] Detector obstaculos
@@ -81,12 +82,12 @@ float data_arduino[16];
 //ENCODERS Y PID
 
   //Alemacenaiento de pulsos de cada motor
-volatile unsigned long ContM1=0;
-volatile unsigned long ContM2=0;
-volatile unsigned long ContM3=0;
-volatile unsigned long ContM4=0;
-volatile unsigned long ContM5=0;
-volatile unsigned long ContM6=0;
+volatile long ContM1=0;
+volatile long ContM2=0;
+volatile long ContM3=0;
+volatile long ContM4=0;
+volatile long ContM5=0;
+volatile long ContM6=0;
 
 //---------------------------------------------------------------------------------------------------
   //ROS
@@ -146,7 +147,7 @@ ros::Publisher data_robot("/hardware/arduino/data", &d_robot);
 
 //____________________________________________________________________________________________________________________
 
-	//SETUP
+  //SETUP
 void setup(){ 
 
   n.getHardware()->setBaud(500000);
@@ -191,6 +192,7 @@ void setup(){
   //Detectando obstaculos
    pinMode(Cont_Der,INPUT);
    pinMode(Cont_Izq,INPUT);
+  Serial.begin(9600);
 } //Fin del SETUP
 //_____________________________________________________________________________________________________________________
 
@@ -311,16 +313,18 @@ void loop(){
   vueltas_Enc[5]=float(ContM6);
      
   //Leyendo sensores de contacto para detectar obstaculos
-	obstaculos[1]=digitalRead(Cont_Der);
-	obstaculos[2]=digitalRead(Cont_Izq);
+  obstaculos[1]=digitalRead(Cont_Der);
+  obstaculos[2]=digitalRead(Cont_Izq);
+  
   //Enviando los datos de los encoders a la raspberry
   for(int j=0; j<6;j++){       
     data_arduino[j+8]=vueltas_Enc[j];  //Asignacin al arreglo del topico a publicar
   }//Fin de la posicion de las llantas
-  for(int k=0; k<2; k++)
-  {
-	data_arduino[k+14]=obstaculos[k]; //Asignación de la presencia de obstaculos al arreglo del tópico
+  
+  for(int k=0; k<2; k++)  {
+  data_arduino[k+14]=obstaculos[k]; //Asignación de la presencia de obstaculos al arreglo del tópico
   }//Fin de la presencia de obstaculos
+  
   //PROCESO DE LA PUBLICACION DE TOPICO      
   d_robot.data=data_arduino;//Se le asignan los datos recolectados al topico que se va a publicar
 
@@ -332,8 +336,11 @@ void loop(){
   digitalWrite(MotorD_A,MD_A); //Motores Derechos
   digitalWrite(MotorD_B,MD_B);
   analogWrite(PWM_MotorD, pwm_D);
+  
   digitalWrite(MotorI_A,MI_A);  //Motores Izquierda
   digitalWrite(MotorI_B,MI_B);
   analogWrite(PWM_MotorI, pwm_I);
+  
+  Serial.println(ContM4);
+  
 }//Fin del LOOP
-
