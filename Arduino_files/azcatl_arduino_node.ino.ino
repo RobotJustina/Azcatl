@@ -63,7 +63,7 @@ int fotoR[8]= {A0,A1,A2,A3,A4,A5,A6,A7};
 #define minPID 13
 //Máximos y minimos valores de PWM que puede conseguir el motor
 #define maxPWM 255
-#define minPWM 17
+#define minPWM 17 //Este es el valor mínimo; a partir del 18 hay movimiento y entre 0 y 17 no.
 
 
 //----------------------------------------------------------------------------------
@@ -80,7 +80,11 @@ int fotoR[8]= {A0,A1,A2,A3,A4,A5,A6,A7};
  float RPM_izq = 0; //Revoluciones por minuto calculadas
  float velocidad_der = 0; //Velocidad en [m/s]
  float velocidad_izq = 0; //Velocidad en [m/s]
-
+//Variables auxiliares para modificar la velocidad de los motores
+//    + Aumenta la velocidad de los motores izquierdos
+//    - Disminuye la velocidad de los motores izquierdos
+//    p Aumenta la velocidad de los motores derechos
+//    m Disminuye la velocidad de los motores derechos
   int cambioderecha = 0;
   float velocidadder = 0;
   int cambioizquierda = 0;
