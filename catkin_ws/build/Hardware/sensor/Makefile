@@ -67,27 +67,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: install/local
-
-.PHONY : install/local/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -98,17 +77,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -121,6 +89,27 @@ install/strip/fast: install/strip
 
 .PHONY : install/strip/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -132,6 +121,17 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: install/local
+
+.PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -181,96 +181,6 @@ sensor_test/fast:
 .PHONY : sensor_test/fast
 
 # Convenience name for target.
-Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make Hardware/sensor/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/build.make Hardware/sensor/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make Hardware/sensor/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/build.make Hardware/sensor/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
 Hardware/sensor/CMakeFiles/sensor_node.dir/rule:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/sensor_node.dir/rule
 .PHONY : Hardware/sensor/CMakeFiles/sensor_node.dir/rule
@@ -284,51 +194,6 @@ sensor_node: Hardware/sensor/CMakeFiles/sensor_node.dir/rule
 sensor_node/fast:
 	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/sensor_node.dir/build.make Hardware/sensor/CMakeFiles/sensor_node.dir/build
 .PHONY : sensor_node/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make Hardware/sensor/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make Hardware/sensor/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/pi/catkin_ws/build && $(MAKE) -f Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make Hardware/sensor/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
 
 src/sensor_node.o: src/sensor_node.cpp.o
 
@@ -391,23 +256,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... test"
-	@echo "... list_install_components"
-	@echo "... sensor_test"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... install/local"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... sensor_node"
 	@echo "... edit_cache"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... rebuild_cache"
-	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... install/strip"
+	@echo "... rebuild_cache"
+	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... install/local"
+	@echo "... sensor_test"
+	@echo "... sensor_node"
 	@echo "... src/sensor_node.o"
 	@echo "... src/sensor_node.i"
 	@echo "... src/sensor_node.s"

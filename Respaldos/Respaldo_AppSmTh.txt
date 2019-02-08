@@ -1,0 +1,376 @@
+metadata {
+	//LABORATORIO DE BIORÓTICA 2019
+    //Modificación para agregar el botón para acceder al modo seguidor de luz, modo evasión obstáculos, modo combinado
+    //Daniel Garcés Marín
+    // 24 de Enero 2019
+    
+	definition (name: "Mobile Robot Shield", namespace: "Bio-Robotics", author: "Daniel Garcés Marín") {
+    	capability "Actuator"
+		capability "Switch"
+		capability "Sensor"
+        capability "Battery"
+        
+        //Setting Speeds
+        command "setLinearSpeed", ["number"]
+        command "setAngularSpeed", ["number"]
+        attribute "linearVel", "number"
+        attribute "angularVel", "number"
+        
+        //Teleop Mode
+        command "ForwardLeft"
+        command "Forward"
+        command "ForwardRight"
+        command "Left"
+        command "Stop"
+        command "Right"
+        command "BackwardLeft"
+        command "Backward"
+        command "BackwardRight"
+        // Nuevo boton
+        command "LightFollowing" 
+        command "AvoidObstacles"
+        command "Light_and_Obstacles"
+        
+        
+        attribute "forwardLeft", "string"
+        attribute "forward", "string"
+        attribute "forwardRight", "string"
+        attribute "left", "string"
+        attribute "stop", "string"
+        attribute "right", "string"
+        attribute "backwardLeft", "string"
+        attribute "backward", "string"
+        attribute "backwardRight", "string"
+        //Nuevo boton agregado
+        attribute "lightFollowing","string" 
+        attribute "avoidObstacles","string"
+        attribute "light_and_Obstacles","string"
+        //Locations
+        command "Entrance"
+        command "Corridor"
+        command "Bedroom"
+        command "Diningroom"
+        command "Sofa"
+        command "Kitchen"
+        command "Livingroom"
+        attribute "goalBedroom", "string"
+        attribute "goalCorridor", "string"
+        attribute "goalEntrance", "string"
+        attribute "goalDiningroom", "string"
+        attribute "goalSofa", "string"
+        attribute "goalKitchen", "string"
+        attribute "goalLivingroom", "string"
+        //Robot state and notification command
+        command "sendDeviceNameNotification", ["string"]
+        attribute "availability", "string"
+	}
+    
+	// Simulator metadata
+    simulator {
+    	status "on":  "catchall: 0104 0000 01 01 0040 00 0A21 00 00 0000 0A 00 0A6F6E"
+		status "off": "catchall: 0104 0000 01 01 0040 00 0A21 00 00 0000 0A 00 0A6F6666"
+        
+		// reply messages
+		reply "raw 0x0 { 00 00 0a 0a 6f 6e }": "catchall: 0104 0000 01 01 0040 00 0A21 00 00 0000 0A 00 0A6F6E"
+		reply "raw 0x0 { 00 00 0a 0a 6f 66 66 }": "catchall: 0104 0000 01 01 0040 00 0A21 00 00 0000 0A 00 0A6F6666"
+	}
+	
+	tiles(scale: 2) {
+    	standardTile("ForwardLeft", "device.forwardLeft", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "ForwardLeft", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-48-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-48-128.png", backgroundColor: "#90d2a7"
+		}
+    	standardTile("Forward", "device.forward", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "Forward", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-41-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-41-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("ForwardRight", "device.forwardRight", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "ForwardRight", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-42-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-42-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Left", "device.left", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "Left", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-47-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-47-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Stop", "device.stop", width: 2, height: 2, canChangeIcon: true, canChangeBackground: true, decoration: "ring") {
+			state "stop", label: 'Stop', action: "Stop", icon: "https://cdn4.iconfinder.com/data/icons/map-navigation-and-direction/60/Stop-128.png", backgroundColor: "#ff0000", defaultState: true, nextState: "transition"
+            state "transition", label: 'Stop', icon: "https://cdn4.iconfinder.com/data/icons/map-navigation-and-direction/60/Stop-128.png", backgroundColor: "#ff00a7"
+		}
+        standardTile("Right", "device.right", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "Right", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-43-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-43-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("BackwardLeft", "device.backwardLeft", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "BackwardLeft", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-46-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-46-128.png", backgroundColor: "#90d2a7"
+		}
+    	standardTile("Backward", "device.backward", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "Backward", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-45-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-45-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("BackwardRight", "device.backwardRight", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "BackwardRight", icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-44-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn2.iconfinder.com/data/icons/arrows-53/24/arrows-44-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("LightFollowing", "device.lightFollowing", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "LightFollowing", icon: "https://cdn0.iconfinder.com/data/icons/star-wars/512/light_saber_green-512.png", backgroundColor: "#38d7e0", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/star-wars/512/light_saber_green-512.png", backgroundColor: "#238dd3"
+		}
+        standardTile("AvoidObstacles", "device.avoidObstacles", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "AvoidObstacles", icon: "https://cdn3.iconfinder.com/data/icons/emergency-outline/432/car_accident_collision_crash_damage_traffic_vehicle_broken_injury_repair-512.png", backgroundColor: "#38d7e0", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn3.iconfinder.com/data/icons/emergency-outline/432/car_accident_collision_crash_damage_traffic_vehicle_broken_injury_repair-512.png", backgroundColor: "#238dd3"
+		}
+        standardTile("Light_and_Obstacles", "device.light_and_Obstacles", width: 2, height: 2, decoration: "ring") {
+			state "actuate", label: '', action: "Light_and_Obstacles", icon: "https://cdn3.iconfinder.com/data/icons/knowledge-management-glyph-2/64/effort-attempt-endeavor-exertion-hiking-goal-512.png", backgroundColor: "#38d7e0", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn3.iconfinder.com/data/icons/knowledge-management-glyph-2/64/effort-attempt-endeavor-exertion-hiking-goal-512.png", backgroundColor: "#238dd3"
+		}
+        //*********************************************************************************************************************************
+        standardTile("Linear", "device.linear", width: 1, height: 1, decoration: "ring") {
+			state "info", label: 'Linear Speed', backgroundColor: "#ffffff", defaultState: true
+		}
+        controlTile("linearSlider", "device.linearVel", "slider", height: 1, width: 4, inactiveLabel: false, range: "(50..100)") {
+			state "level", action:"setLinearSpeed"
+		}
+		valueTile("linearValue", "device.linearVel", height: 1, width: 1) {
+			state "range", label:'${currentValue}%', defaultState: true
+		}
+        //*********************************************************************************************************************************
+        standardTile("Angular", "device.angular", width: 1, height: 1, decoration: "ring") {
+			state "info", label: 'Angular Speed', backgroundColor: "#ffffff", defaultState: true
+		}
+        controlTile("angularSlider", "device.angularVel", "slider", height: 1, width: 4, inactiveLabel: false, range: "(50..100)") {
+			state "level", action:"setAngularSpeed"
+		}
+		valueTile("angularValue", "device.angularVel", height: 1, width: 1) {
+			state "range", label:'${currentValue}%', defaultState: true
+		}
+        //*********************************************************************************************************************************
+        standardTile("Label", "device.label", width: 2, height: 2, canChangeBackground: true, decoration: "ring") {
+			state "info", label: 'Robot Info', backgroundColor: "#ffffff", defaultState: true
+		}
+        standardTile("Availability", "device.availability", width: 2, height: 2, decoration: "flat") {
+        	state "onstandby", label: 'On Standby', backgroundColor: "#79b821", defaultState: true
+			state "busy", label: 'Busy', backgroundColor: "#ff0000"
+		}
+        //*********************************************************************************************************************************
+        standardTile("Bedroom", "device.goalBedroom", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Bedroom \n.', action: "Bedroom", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Corridor", "device.goalCorridor", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Corridor \n.', action: "Corridor", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Diningroom", "device.goalDiningroom", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Dining \n room', action: "Diningroom", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Entrance", "device.goalEntrance", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Entrance \n.', action: "Entrance", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Kitchen", "device.goalKitchen", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Kitchen \n.', action: "Kitchen", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Livingroom", "device.goalLivingroom", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Living \n room', action: "Livingroom", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        standardTile("Sofa", "device.goalSofa", width: 2, height: 2, decoration: "flat") {
+			state "actuate", label: 'Sofa', action: "Sofa", icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#79b821", defaultState: true, nextState: "transition"
+            state "transition", label: '', icon: "https://cdn0.iconfinder.com/data/icons/cute-robot-character-part-1/512/14-128.png", backgroundColor: "#90d2a7"
+		}
+        //*********************************************************************************************************************************
+    	standardTile("switch", "device.switch", width: 2, height: 2, decoration: "ring") {
+			state "on", label: '${name}', action: "switch.off", icon: "st.switches.switch.on", backgroundColor: "#79b821"
+			state "off", label: '${name}', action: "switch.on", icon: "st.switches.switch.off", backgroundColor: "#ffffff"
+		}
+        //*********************************************************************************************************************************
+        valueTile("BatteryCharge", "device.battery", width: 2, height: 2) {
+            state("value", label:'${currentValue} % \n Battery',
+                backgroundColors:[
+                    [value: 100, color: "#153591"],
+                    [value: 80, color: "#1e9cbb"],
+                    [value: 70, color: "#90d2a7"],
+                    [value: 60, color: "#44b621"],
+                    [value: 50, color: "#f1d801"],
+                    [value: 40, color: "#d04e00"],
+                    [value: 30, color: "#bc2323"]
+                ]
+            )
+        }
+        
+		main (["Stop"])
+        details(["ForwardLeft","Forward","ForwardRight",
+        		"Left","Stop","Right",
+                "BackwardLeft","Backward","BackwardRight",
+                "LightFollowing", "AvoidObstacles","Light_and_Obstacles",
+                "Linear","linearSlider","linearValue",
+                "Angular","angularSlider","angularValue",
+                "Label","Availability","BatteryCharge","Bedroom",
+                "Corridor","Diningroom","Entrance","Kitchen",
+                "Livingroom","Sofa"])
+                //"switch"])
+	}
+}
+
+// Parse incoming device messages to generate events
+def parse(String description) {
+	def value = zigbee.parse(description)?.text
+    def name = null
+    def subvalue = null
+    	
+    switch (value) {
+        case "on":
+        	name = "switch"
+        	break
+        case "off":
+        	name = "switch"
+        	break
+        default:
+            name = null
+    }
+
+    if(!name)
+    {
+    	if (value?.length() > 3)
+        {
+        	subvalue = value.take(2)
+            if(subvalue == "bL")
+            {
+                def valSplitted = value.split('-')
+                value = Integer.parseInt(valSplitted[1])
+                name = "battery"
+            }
+            else if (subvalue == "rS")
+            {
+            	def valSplitted = value.split('-')
+                if(valSplitted[1] == "onSB")
+                {
+                	value = "onstandby"
+                    name = "availability"
+                }
+                else if (valSplitted[1] == "busy")
+                {
+                	value = "busy"
+                    name = "availability"
+                }
+            }
+        }
+    }
+    def result = createEvent(name: name, value: value, isStateChange: true, displayed: true)
+	//log.debug "Parse returned ${result?.descriptionText}"
+	return result
+}
+
+// Commands sent to the device
+def on(){
+	//sendEvent(name: "battery", value: 100, isStateChange: true)
+	zigbee.smartShield(text: "on").format()
+}
+
+def off(){
+	zigbee.smartShield(text: "off").format()
+}
+//************************TELEOP MODE************************************
+def ForwardLeft(){
+	sendEvent(name: "forwardLeft", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-FwL").format()
+}
+def Forward(){
+	sendEvent(name: "forward", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-Fw").format()
+}
+def ForwardRight(){
+	sendEvent(name: "forwardRight", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-FwR").format()
+}
+def Left(){
+	sendEvent(name: "left", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-L").format()
+}
+def Stop(){
+	sendEvent(name: "stop", value: "stop", isStateChange: true)
+	zigbee.smartShield(text: "stop").format()
+}
+def Right(){
+	sendEvent(name: "right", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-R").format()
+}
+def BackwardLeft(){
+	sendEvent(name: "backwardLeft", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-BwL").format()
+}
+def Backward(){
+	sendEvent(name: "backward", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-Bw").format()
+}
+def BackwardRight(){
+	sendEvent(name: "backwardRight", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-BwR").format()
+}
+
+def LightFollowing(){
+	sendEvent(name: "lightFollowing", value: "actuate", isStateChange: true)
+    zigbee.smartShield(text: "mov-light").format()
+}
+    
+def AvoidObstacles(){
+	sendEvent(name: "avoidObstacles", value: "actuate", isStateChange: true)
+    //zigbee.smartShield(text: "avoid_obs").format()
+    zigbee.smartShield(text: "mov-avoidObs").format()
+}
+def Light_and_Obstacles(){
+	sendEvent(name: "light_and_Obstacles", value: "actuate", isStateChange: true)
+    //zigbee.smartShield(text: "light_and_obs").format()
+    zigbee.smartShield(text: "mov-lightObs").format()
+    
+}
+//************************LOCATIONS************************************
+def Entrance(){
+	sendEvent(name: "goalEntrance", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Entrance").format()
+}
+def Corridor(){
+	sendEvent(name: "goalCorridor", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Corridor").format()
+}
+def Bedroom(){
+	sendEvent(name: "goalBedroom", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Bedroom").format()
+}
+def Diningroom(){
+	sendEvent(name: "goalDiningroom", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Dining room").format()
+}
+def Sofa(){
+	sendEvent(name: "goalSofa", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Sofa").format()
+}
+def Kitchen(){
+	sendEvent(name: "goalKitchen", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Kitchen").format()
+}
+def Livingroom(){
+    sendEvent(name: "goalLivingroom", value: "actuate", isStateChange: true)
+	zigbee.smartShield(text: "loc-Living room").format()
+}
+
+//************************DEVICES**************************************
+//def sendDeviceNameNotification(def deviceName){
+def sendDeviceNameNotification(deviceName){
+    //log.debug "Command sent to ROS: ${"dev" + deviceName}"
+    zigbee.smartShield(text: "dev-" + deviceName).format()
+}
+
+//************************SETTING SPEEDS************************************
+def setLinearSpeed(value){
+	sendEvent(name: "linearVel", value: value, isStateChange: true)
+    zigbee.smartShield(text: "lin-$value").format()
+}
+
+def setAngularSpeed(value){
+	sendEvent(name: "angularVel", value: value, isStateChange: true)
+    zigbee.smartShield(text: "ang-$value").format()
+}
