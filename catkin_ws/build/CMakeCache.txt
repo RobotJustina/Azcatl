@@ -312,6 +312,18 @@ _CATKIN_GTEST_SRC:FILEPATH=/usr/src/gtest/src/gtest.cc
 _file_name:FILEPATH=/home/pi/catkin_ws/src/rosserial/rosserial_test/test/rosserial_python_socket.test
 
 //Value Computed by CMake
+azcatl_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/azcatl
+
+//Value Computed by CMake
+azcatl_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/azcatl
+
+//Value Computed by CMake
+azcatl_begin_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/azcatl_begin
+
+//Value Computed by CMake
+azcatl_begin_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/azcatl_begin
+
+//Value Computed by CMake
 base_node_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/Hardware/base_node
 
 //Value Computed by CMake
@@ -445,7 +457,7 @@ hokuyo_node_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/hokuyo_node
 hokuyo_node_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/hokuyo_node
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/indigo/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/indigo/lib/libtopic_tools.so
 
 //Dependencies for the target
 liburg_c_LIB_DEPENDS:STATIC=general;-lrt;general;-lm;
@@ -461,6 +473,12 @@ message_generation_DIR:PATH=/opt/ros/indigo/share/message_generation/cmake
 
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/indigo/share/message_runtime/cmake
+
+//Value Computed by CMake
+motion_planner_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/motion_planner
+
+//Value Computed by CMake
+motion_planner_SOURCE_DIR:STATIC=/home/pi/catkin_ws/src/motion_planner
 
 //Value Computed by CMake
 moto_navi_BINARY_DIR:STATIC=/home/pi/catkin_ws/build/motor_navi
@@ -834,7 +852,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=17
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=18
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
