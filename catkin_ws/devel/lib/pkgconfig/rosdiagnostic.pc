@@ -1,8 +1,0 @@
-prefix=/home/pi/catkin_ws/devel
-
-Name: rosdiagnostic
-Description: Description of rosdiagnostic
-Version: 1.8.10
-Cflags: 
-Libs: -L/home/pi/catkin_ws/devel/lib 
-Requires: 

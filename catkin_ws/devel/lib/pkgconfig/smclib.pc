@@ -1,8 +1,0 @@
-prefix=/home/pi/catkin_ws/devel
-
-Name: smclib
-Description: Description of smclib
-Version: 1.7.19
-Cflags: -I/home/pi/catkin_ws/src/bond_core/smclib/include
-Libs: -L/home/pi/catkin_ws/devel/lib 
-Requires: 
