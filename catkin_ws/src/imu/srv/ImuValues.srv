@@ -1,4 +1,0 @@
-string readings
-bool degrees
----------------
-std_msgs/Float32MultiArray data
